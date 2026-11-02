@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08070d"><title>NEXUS — Social Network</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <aside class="sidebar">
+    <a class="brand" href="#" data-view="feed"><span class="logo">N</span><span>NEXUS</span></a>
+    <div class="side-caption">NEXUS SOCIAL</div>
+    <nav id="nav">
+      <button data-view="messages" class="nav active"><span>✉</span> Чаты</button>
+      <button data-view="feed" class="nav"><span>▦</span> Лента</button>
+      <button data-view="shorts" class="nav"><span>▣</span> Shorts</button>
+      <button data-view="videos" class="nav"><span>▶</span> Видео</button>
+      <button data-view="servers" class="nav"><span>◉</span> Серверы</button>
+      <button data-view="profile" class="nav"><span>◎</span> Профиль</button>
+      <button data-view="settings" class="nav"><span>⚙</span> Настройки</button>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="user-mini"><div id="miniAvatar" class="avatar">👤</div><div class="user-mini-text"><b id="miniName">Гость</b><small id="miniHandle">Не авторизован</small></div></div>
+      <button id="logoutBtn" class="logout hidden">Выйти ↗</button>
+      <button id="themeBtn" class="theme-toggle">☼ Переключить тему</button>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="top-heading"><div class="eyebrow">NEXUS / SOCIAL</div><h1 id="pageTitle">Чаты</h1></div><div class="top-actions"><label class="global-search">⌕ <input id="globalSearch" placeholder="Поиск людей и чатов…" autocomplete="off"></label><button id="topAvatar" class="avatar"> </button></div></header>
+    <section id="authScreen" class="auth-layout">
+      <div class="auth-intro"><div class="logo big-logo">N</div><p class="eyebrow">ТВОЯ СЕТЬ. ТВОИ ПРАВИЛА.</p><h2>Общайся.<br><span>Создавай.</span><br>Будь в NEXUS.</h2><p class="muted">Публикации, сообщества, видео и люди, которые разделяют твои интересы.</p><div class="auth-perks"><span>✦ Лента публикаций</span><span>✦ Кланы и достижения</span><span>✦ Личные сообщения</span></div></div>
+      <div class="auth-card"><div class="brand"><span class="logo">N</span><span>NEXUS</span></div><h2 id="authTitle">С возвращением</h2><p class="muted" id="authHint">Войди, чтобы продолжить общение</p>
+        <form id="authForm">
+          <div id="displayNameWrap" class="field hidden"><label>Имя в профиле</label><input id="displayName" maxlength="40" placeholder="Как тебя зовут?"></div>
+          <div id="usernameWrap" class="field hidden"><label>Уникальный юзернейм</label><input id="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]+" placeholder="your_username" autocomplete="username"><small>Латиница, цифры и подчёркивание</small></div>
+          <div class="field"><label id="loginLabel">Почта или юзернейм</label><input id="login" required placeholder="name@example.com" autocomplete="username"></div>
+          <div class="field"><label>Пароль</label><input id="password" type="password" required minlength="8" maxlength="72" placeholder="Минимум 8 символов" autocomplete="current-password"></div>
+          <button id="authSubmit" class="primary full">Войти в NEXUS <span>→</span></button><p id="authError" class="error"></p>
+        </form>
+        <div class="auth-switch"><span id="authSwitchText">Нет аккаунта?</span> <button id="switchAuth" class="link-btn">Зарегистрироваться</button></div>
+        <p class="tiny muted">Используй уникальный пароль. Публичный запуск требует HTTPS и настройки резервного копирования.</p>
+      </div>
+    </section>
+    <section id="viewRoot" class="view-root hidden"></section>
+  </main>
+</div>
+<div id="toast" class="toast"></div>
+<template id="postTemplate"><article class="post-card"><div class="post-head"><div class="avatar">👤</div><div class="post-author"><b>Пользователь</b><small>@username · сейчас</small></div><button class="more-btn">•••</button></div><p class="post-text"></p><div class="post-media"></div><div class="post-stats"></div><div class="post-actions"></div><div class="comment-area"></div></article></template>
+<script src="/socket.io/socket.io.js"></script><script src="./app.js"></script>
+</body></html>
